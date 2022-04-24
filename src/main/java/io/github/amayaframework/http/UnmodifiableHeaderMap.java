@@ -85,4 +85,9 @@ class UnmodifiableHeaderMap implements HeaderMap {
     public Set<Entry<String, List<String>>> entrySet() {
         return map.entrySet();
     }
+
+    @Override
+    public String toString() {
+        return body.toString();
+    }
 }
