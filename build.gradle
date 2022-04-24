@@ -4,6 +4,14 @@ plugins {
     id 'signing'
 }
 
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+    compileJava.options.encoding('UTF-8')
+    withJavadocJar()
+    withSourcesJar()
+}
+
 group = 'io.github.amayaframework'
 archivesBaseName = 'http-utils'
 version = '1.0.0'
