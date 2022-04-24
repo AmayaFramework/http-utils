@@ -1,0 +1,77 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+    id 'signing'
+}
+
+group = 'io.github.amayaframework'
+archivesBaseName = 'http-utils'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+}
+
+jar {
+    from sourceSets.main.output
+    from sourceSets.main.allJava
+}
+
+signing {
+    sign publishing.publications
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            // Specify artifacts
+            artifactId = archivesBaseName
+            groupId = group
+            version = version
+            from components.java
+            // Configure pom
+            pom {
+                name.set(archivesBaseName)
+                description.set('A very small library containing some http utilities ' +
+                        'used in various parts of the framework.')
+                url.set('https://github.com/AmayaFramework/http-utils')
+                organization {
+                    name.set('io.github.amayaframework')
+                    url.set('https://github.com/AmayaFramework')
+                }
+                issueManagement {
+                    system.set('GitHub')
+                    url.set('https://github.com/AmayaFramework/http-utils/issues')
+                }
+                licenses {
+                    license {
+                        name.set('Apache-2.0 License')
+                        url.set('https://github.com/AmayaFramework/http-utils/blob/main/LICENSE')
+                    }
+                }
+                scm {
+                    url.set('https://github.com/AmayaFramework/http-utils')
+                    connection.set('scm:https://github.com/AmayaFramework/http-utils.git')
+                    developerConnection.set('scm:https://github.com/AmayaFramework/http-utils.git')
+                }
+                developers {
+                    developer {
+                        id.set('RomanQed')
+                        name.set('Roman Bakaldin')
+                        email.set('gbakaldin@gmail.com')
+                    }
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            url 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2'
+            credentials {
+                username System.getenv('SONATYPE_USERNAME')
+                password System.getenv('SONATYPE_PASSWORD')
+            }
+        }
+    }
+}
