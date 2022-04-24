@@ -48,7 +48,11 @@ class UnmodifiableHeaderMap implements HeaderMap {
 
     @Override
     public List<String> get(Object key) {
-        return Collections.unmodifiableList(body.get(key));
+        List<String> ret = body.get(key);
+        if (ret == null) {
+            return null;
+        }
+        return Collections.unmodifiableList(ret);
     }
 
     @Override
