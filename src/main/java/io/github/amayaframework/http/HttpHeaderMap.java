@@ -29,6 +29,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * A class describing a structure that stores http headers.
+ */
 public class HttpHeaderMap extends HashMap<String, List<String>> implements HeaderMap {
     public HttpHeaderMap(int initialCapacity) {
         super(initialCapacity);

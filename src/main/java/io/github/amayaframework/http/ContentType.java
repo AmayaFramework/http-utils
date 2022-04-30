@@ -2,6 +2,9 @@ package io.github.amayaframework.http;
 
 import java.util.*;
 
+/**
+ * Enum containing the main http content types.
+ */
 public enum ContentType {
     // Application
     ATOM_XML("application", "atom+xml"),
